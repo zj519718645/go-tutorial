@@ -14,4 +14,5 @@ Golang Tutorial
 9. go轻量级线程
 10. channel
 11. select
+12. 支持多重继承
 
