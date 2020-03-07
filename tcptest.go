@@ -69,10 +69,10 @@ func PingPrint(address, port string) (string, error) {
 	err, t := TcpConnect(address)
 	if err != nil {
 		return "ERROR: connect failed\n", err
-	} else {
-		return "SUCCESS: connected\n", nil
 	}
 	time.Sleep(time.Millisecond)
+	return "SUCCESS: connected\n", nil
+
 }
 
 func main() {
