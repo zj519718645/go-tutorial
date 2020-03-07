@@ -65,8 +65,7 @@ func Usages() {
 
 // 格式化打印输出
 func PingPrint(address, port string) (string, error) {
-	date := time.Now().Format("2006-01-02 15:04:05")
-	err, t := TcpConnect(address)
+	err, _ := TcpConnect(address)
 	if err != nil {
 		return "ERROR: connect failed\n", err
 	}
