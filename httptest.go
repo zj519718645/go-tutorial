@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"time"
@@ -34,15 +33,11 @@ func main() {
 func Getresp(api string) (string, error) {
 	resp, err := http.Get(api)
 	if err != nil {
-		return "ERROR: connect failed", err
+		return "ERROR: connect failed\n", err
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("ERROR: get info didn’t respond 200 OK: %s", resp.Status)
-	}
-	_, err = ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "ERROR: get response failed", err
+		return "ERROR: get response failed\n", fmt.Errorf("ERROR: get info didn’t respond 200 OK: %s", resp.Status)
 	}
 	return "SUCCESS: connected\n", nil
 }

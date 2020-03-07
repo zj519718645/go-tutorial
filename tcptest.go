@@ -64,16 +64,15 @@ func Usages() {
 }
 
 // 格式化打印输出
-func PingPrint(address, port string) {
+func PingPrint(address, port string) (string, error) {
 	date := time.Now().Format("2006-01-02 15:04:05")
 	err, t := TcpConnect(address)
 	if err != nil {
-		fmt.Printf("%s Connection timed out\n", date)
+		return "ERROR: connect failed\n", err
 	} else {
-		fmt.Printf("%s Connected to %s: time=%s protocol=%s port=%s\n",
-			date, address, t, "TCP", port)
+		return "SUCCESS: connected\n", nil
 	}
-	time.Sleep(1000 * time.Millisecond)
+	time.Sleep(time.Millisecond)
 }
 
 func main() {
@@ -84,7 +83,13 @@ func main() {
 	if h == "" || p == "" {
 		Help()
 	}
+	f, err := os.OpenFile("tcptest.log", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	defer f.Close()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 	for i := 0; i < c; i++ {
-		PingPrint(address, p)
+		resp, _ := PingPrint(address, p)
+		f.Write([]byte(time.Now().Format("2006/01/02 15:04:05") + "->" + resp))
 	}
 }
