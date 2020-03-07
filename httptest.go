@@ -40,9 +40,9 @@ func Getresp(api string) (string, error) {
 	if resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("ERROR: get info didn’t respond 200 OK: %s", resp.Status)
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+	_, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "ERROR: get response failed", err
 	}
-	return string(body), nil
+	return string("SUCCESS: connected"), nil
 }
