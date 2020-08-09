@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Persons>
+   <Person Name="polaris" Age="38">
+      <Career>老师</Career>
+      <Interests>
+         <Interest>编程</Interest>
+         <Interest>下棋</Interest>
+      </Interests>
+   </Person>
+   <Person Name="studyGolang" Age="18">
+      <Career>学生</Career>
+      <Interests>
+         <Interest>编程</Interest>
+         <Interest>下棋</Interest>
+      </Interests>
+   </Person>
+</Persons>
