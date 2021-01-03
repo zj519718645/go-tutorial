@@ -4,8 +4,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type Article struct{}
+
 func NewArticle() Article {
-	return Article()
+	return Article{}
 }
 
 func (a Article) Get(c *gin.Context)    {}

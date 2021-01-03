@@ -3,8 +3,8 @@ package cmd
 import (
 	"log"
 
-	"github.com/zj519718645/go-tutorial/projects/sqltostruct/internal/sql2struct"
 	"github.com/spf13/cobra"
+	"github.com/zj519718645/go-tutorial/projects/sqltostruct/internal/sql2struct"
 )
 
 var username string
